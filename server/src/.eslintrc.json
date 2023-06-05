@@ -1,3 +1,7 @@
 {
-  "extends": ["@rocketsaer/eslint-config/node"]
+  "extends": ["@rocketsaer/eslint-config/node"],
+  "rules": {
+    "camelcase": "off"
+  }
 }
+
