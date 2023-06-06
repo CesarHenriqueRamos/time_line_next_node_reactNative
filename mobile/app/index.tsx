@@ -6,7 +6,6 @@ import * as SecureStore from 'expo-secure-store'
 
 import NLWLogo from '../src/assets/nlw-spacetime-logo.svg'
 import { api } from '../src/lib/api'
-import axios from 'axios'
 
 const discovery = {
   authorizationEndpoint: 'https://github.com/login/oauth/authorize',
@@ -31,9 +30,17 @@ export default function App() {
 
   async function handleGithubOAuthCode(code: string) {
     console.log(code)
-    const response = await axios.post('http://localhost:3333/register', {
-      code,
-    })
+    const response = await api.post(
+      'http://localhost:3333/register',
+      {
+        code,
+      },
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    )
     console.log(response)
 
     const { token } = response.data

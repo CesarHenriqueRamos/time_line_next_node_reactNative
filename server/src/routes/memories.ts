@@ -22,7 +22,8 @@ app.get("/memories", async (request) => {
     return {
       id:memory.id,
       coverUrl: memory.coverUrl,
-      excerpt: memory.content.substring(0,115).concat('...')
+      excerpt: memory.content.substring(0,115).concat('...'),
+      createdAt:memory.createAt
     }
   });
 });
